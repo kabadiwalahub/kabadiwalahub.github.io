@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pregnancy Due Date Calculator</title>
+  <style>
+    body { font-family: Arial; padding: 2rem; }
+    input, button { padding: 0.5rem; margin: 0.5rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Pregnancy Due Date Calculator</h1>
+  <label for="lmp">Enter first day of your last menstrual period (LMP):</label><br>
+  <input type="date" id="lmp"><br>
+  <button onclick="calculateDueDate()">Calculate Due Date</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateDueDate() {
+      const lmp = document.getElementById("lmp").value;
+      if (!lmp) return alert("Please select a date.");
+
+      const lmpDate = new Date(lmp);
+      lmpDate.setDate(lmpDate.getDate() + 280); // 280 days from LMP
+
+      const result = lmpDate.toDateString();
+      document.getElementById("result").textContent = `Estimated Due Date: ${result}`;
+    }
+  </script>
+</body>
+</html>
